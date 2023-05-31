@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 router.use((req, res, next) => {
-	console.log( 'Time:' , Date.now());
-	next();
+  console.log("Time:", Date.now());
+  next();
 });
 router.get("/home", (req, res) => {
   res.send("Hello World, This is home router");
@@ -23,6 +23,6 @@ router.get("/logout", (req, res) => {
 
 app.use("/", router);
 
-app.listen(process.env.port || 9099);
+app.listen(process.env.port || 3000);
 
-console.log("Web Server is listening at port " + (process.env.port || 9099));
+console.log("Web Server is listening at port " + (process.env.port || 3000));
