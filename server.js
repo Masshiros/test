@@ -1,7 +1,18 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
-
+router.get("/",(req,res) => {
+  fs.readFile('frontend/index.html', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.statusCode = 500;
+      res.end('<h1>Internal Server Error</h1>');
+    } else {
+      res.setHeader('Content-Type', 'text/html');
+      res.end(data);
+    }
+  });
+})
 router.get("/home", (req, res) => {
   res.send("Hello World, This is home router");
 });
